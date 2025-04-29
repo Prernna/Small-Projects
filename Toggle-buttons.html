@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Buttons</title>
+    <style>
+        .js-toggle{
+            background-color: rgb(230,230, 230);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 18px;
+
+        }
+        .is-Toggle{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button class="js-toggle button1" onclick="toggleButton('.button1')" >Paint</button>
+
+    <button class="js-toggle button2" onclick="toggleButton('.button2')" >Color</button>
+
+    <button class="js-toggle button3" onclick="toggleButton('.button3')" >Sketch</button>
+
+
+    <script>
+        function toggleButton(selector){
+            const button = document.querySelector(selector)
+            if(!button.classList.contains('is-Toggle')){
+                turnOffPreviousButton()
+                button.classList.add('is-Toggle')
+            }
+            else{
+                button.classList.remove('is-Toggle')
+            }
+        }
+
+        function turnOffPreviousButton(){
+            const previousButton = document.querySelector('.is-Toggle')
+            if(previousButton){
+                previousButton.classList.remove('is-Toggle')
+            }
+        }
+    </script>
+</body>
+</html>
