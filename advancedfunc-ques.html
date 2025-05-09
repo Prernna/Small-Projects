@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>App</title>
+</head>
+<body>
+   <button class="start-button" onclick="updateButton()">Start</button>
+   <button class="cart-button" onclick="added()" >Add to Cart</button>
+   <p class="cart-messege"></p><br><br>
+
+   <button onclick="message++">Add</button>
+   <button onclick="message--;
+   if(message === 0 || message < 0){
+      stopTitle()
+   }
+   ">Remove</button>
+
+   <script>
+       let add = function adds(){
+    console.log(2+3)
+ }
+ add()
+
+function runTwice(fun){
+fun()
+fun()
+
+} 
+runTwice(add)
+
+//when start button gets clicked text should change to loading then after 2 seconds it should change to finished!
+function updateButton(){
+   const button = document.querySelector('.start-button')
+   button.innerHTML='Loading...'
+   setTimeout(function(){
+      button.innerHTML='Finished!'
+   },2000)
+}
+
+//create a button ' Add to Cart' when clicking on a button it should display a messege as added and then it should be removed after 2 seconds.
+let setTime;
+function added(){
+   const messege = document.querySelector('.cart-messege')
+   messege.innerText = 'Added' 
+   clearTimeout(setTime)
+    setTime =  setTimeout(function(){
+      messege.innerText = " "
+   },2000)
+}
+
+//imagine we're creating a messaging app. Use setInterval() and document.title to create the feature on the right (title changes every 1 second)
+
+let docTitle = true
+const intervalId = setInterval(()=>{
+   if(docTitle){
+      document.title='App'
+   }else{
+      document.title='(2) New messages'
+   }
+   docTitle=!docTitle //to toggle the value
+},2000)  
+
+//if you want to stop changing titles then uncomment below code
+// setTimeout(()=>{
+//    clearInterval(intervalId)
+//    document.title='Stop'
+// },7000)
+
+//update above question , instead of displaying "2 new messages" , save no. of messages in variable. let mess=2. use number in variable to determine what title to display. create 2 buttons 'Add'/'Remove' that increase/decrease 'messages' variable by 1.
+
+let message = 2;
+const newTitleId= setInterval(()=>{
+   if(document.title==='Add'){
+      document.title=`${message} New messages`
+   }else{
+      document.title='Add'
+   }
+},1000)
+
+//continuing from above statement .dont let messages go below 0. if messages is 0 stop changing title and display 'App updated' as title, when message?0 start updating title again
+//can also comment to above questions and answers to not get confused.
+
+function stopTitle(){
+   docTitle=false;
+   clearInterval(newTitleId)
+   document.title='App Updated'
+}
+   </script>
+</body>
+</html>
